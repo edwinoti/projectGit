@@ -1,0 +1,52 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout code from the repository
+                git 'https://github.com/edwinoti/projectGit.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                // Build the project
+                sh './build.sh'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                // Run tests
+                sh './run-tests.sh'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                // Deploy the application
+                sh './deploy.sh'
+            }
+        }
+    }
+
+    post {
+        always {
+            // Archive build artifacts
+            archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
+        }
+        success {
+            // Notify success
+            mail to: 'team@edwin.com',
+                 subject: "SUCCESS: Build ${env.JOB_NAME} ${env.BUILD_NUMBER}",
+                 body: "The build ${env.JOB_NAME} ${env.BUILD_NUMBER} was successful."
+        }
+        failure {
+            // Notify failure
+            mail to: 'team@edwin.com',
+                 subject: "FAILURE: Build ${env.JOB_NAME} ${env.BUILD_NUMBER}",
+                 body: "The build ${env.JOB_NAME} ${env.BUILD_NUMBER} failed. Please check the Jenkins logs for more details."
+        }
+    }
+}
