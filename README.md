@@ -11,11 +11,11 @@
     
   **Code structure**
     
-    The main code is on path /home/edwino/eclipse-workspace/projectGit/src/main/java/com/test/app/App.java
+    The main code is on path /projectGit/src/main/java/com/test/app/App.java
 
-    The test code is on path /home/edwino/eclipse-workspace/projectGit/src/test/java/com/test/app/AppTest.java
+    The test code is on path /projectGit/src/test/java/com/test/app/AppTest.java
     
-2.    **Jenkins** code is on path  /home/edwino/eclipse-workspace/projectGit/jenkins/Jenkinsfile
+2.    **Jenkins** code is on path  /projectGit/jenkins/Jenkinsfile
 
 
 3. **Jmeter** 
@@ -23,7 +23,7 @@
    Throughput: Achieve a throughput of at least 100 requests per minute.  
    Get endpoint api used https://api.github.com/repos/REPO/pulls/PULL_NUMBER
    
-   Jmeter code file path on git   Postman_api_automation/git_api_performance.jmx
+   Jmeter code file path on git   /projectGit/Postman_api_automation/git_api_performance.jmx
    
    
 4. POSTMAN API Automation
